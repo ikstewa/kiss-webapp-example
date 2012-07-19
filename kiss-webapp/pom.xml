@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+        <artifactId>kiss-webapp-example</artifactId>
+        <groupId>org.eclps.test</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+  
+  <artifactId>kiss-webapp</artifactId>
+  <packaging>war</packaging>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.flexmojos</groupId>
+        <artifactId>flexmojos-maven-plugin</artifactId>
+        <version>${flexmojos.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>wrapper</goal>
+              <goal>copy-flex-resources</goal>
+            </goals>
+            <configuration>
+              <wrapperArtifact>
+                <groupId>org.eclps.test</groupId>
+                <artifactId>kiss-client</artifactId>
+              </wrapperArtifact>
+              <webappDirectory>target/war/work/wrapped-template</webappDirectory>
+              <stripVersion>true</stripVersion>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+        <configuration>
+          <webResources>
+            <resource>
+                <directory>target/war/work/wrapped-template</directory>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.eclps.test</groupId>
+      <artifactId>kiss-client</artifactId>
+      <version>${project.version}</version>
+      <type>swf</type>
+    </dependency>
+  </dependencies>
+
+</project>

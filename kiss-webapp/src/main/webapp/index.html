@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+   <title>${title}</title>
+   <style>
+   body { margin: 0px; overflow: hidden; }
+   </style>
+   
+   <script src="swfobject.js"></script>
+   <script type="text/javascript">
+   var flashVars = {
+        testVar: "value"
+     };
+     var params = {
+        allowFullScreen: "true",
+        allowScriptAccess: "sameDomain"
+     };
+   
+   swfobject.embedSWF( "${swf}.swf", "swf", "${width}", "${height}", "10.0.0", "expressInstall.swf", flashVars, params );
+   </script>
+</head>
+<body>
+   
+   <div id="swf">
+      <p>Alternative content</p>
+    </div>
+    
+</body>
+</html>
